@@ -27,16 +27,27 @@ namespace Networth
             //variable definitions
             int maxAssets = 0;
             int maxLiabilities = 0;
+            int age = 0;
+            double salary = 0;
             double assetsInput = 0;
             double liabilitiesInput = 0;
             double totalAssets = 0;
             double totalLiabilities = 0;
+            double targetNetWorth = 0;
             
             //create lists for assets and liabilities
             List<double> assets = new List<double>();
             List<double> liabilities = new List<double>();
 
             //prompt for user input
+            Console.Write("Please enter your salary: ");    //get salary for target networth
+            salary = double.Parse(Console.ReadLine());
+
+            Console.Write("Please enter your age: ");
+            age = int.Parse(Console.ReadLine());
+
+            targetNetWorth = age * salary * .10;    //formula for target networth
+
             Console.Write("Please enter the number of assets you have: ");
             maxAssets = int.Parse(Console.ReadLine());
 
@@ -59,19 +70,37 @@ namespace Networth
                 totalLiabilities += liabilitiesInput;
             }
 
+            //sort list in descending order
+            assets.Sort();
+            assets.Reverse();
+
+            liabilities.Sort();
+            liabilities.Reverse();
+
 
             Console.WriteLine("\n");
 
+            Console.WriteLine("You have the following assets: ");
             for(int i = 0; i < maxAssets; i++)
             {
-                Console.WriteLine(assets[i]);
+                Console.WriteLine($"${assets[i]}");
             }
 
             Console.WriteLine("\n");
 
-            Console.WriteLine($"Your Networth is: {totalAssets - totalLiabilities}.");
+            Console.WriteLine("You have the following liabilities: ");
+            for (int i = 0; i < maxLiabilities; i++)
+            {
+                Console.WriteLine($"${liabilities[i]}");
+            }
+            Console.WriteLine("\n");
 
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine($"Your target Net Worth is Salary:${salary} * {age} * 0.10 = ${targetNetWorth}.");
+            Console.WriteLine($"Your Networth is: ${totalAssets - totalLiabilities}.");
+
+            Console.WriteLine("\n");
+
+            Console.WriteLine($"You are ${(totalAssets - totalLiabilities) - targetNetWorth} from reaching your target NetWorth of ${targetNetWorth}!");
         }
     }
 }
