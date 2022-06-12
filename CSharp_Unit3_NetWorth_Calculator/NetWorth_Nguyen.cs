@@ -85,6 +85,7 @@ namespace Networth
             {
                 Console.WriteLine($"${assets[i]}");
             }
+            Console.WriteLine($"Your total Assets is ${totalAssets}.");
 
             Console.WriteLine("\n");
 
@@ -93,6 +94,8 @@ namespace Networth
             {
                 Console.WriteLine($"${liabilities[i]}");
             }
+            Console.WriteLine($"Your total Liabilites is ${totalLiabilities}.");
+
             Console.WriteLine("\n");
 
             Console.WriteLine($"Your target Net Worth is Salary:${salary} * {age} * 0.10 = ${targetNetWorth}.");
@@ -100,7 +103,7 @@ namespace Networth
 
             Console.WriteLine("\n");
 
-            Console.WriteLine($"You are ${(totalAssets - totalLiabilities) - targetNetWorth} from reaching your target NetWorth of ${targetNetWorth}!");
+            Console.WriteLine($"You are ${targetNetWorth - (totalAssets - totalLiabilities)} from reaching your target NetWorth of ${targetNetWorth}!");
         }
     }
 }
