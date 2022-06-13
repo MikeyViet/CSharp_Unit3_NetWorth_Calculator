@@ -21,6 +21,10 @@ namespace Networth
 {
     class NetWorth_Nguyen
     {
+        public class Liabilities
+        {
+
+        }
 
         static void Main(string[] args)
         {
