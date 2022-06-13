@@ -23,7 +23,41 @@ namespace Networth
     {
         public class Liabilities
         {
+            private decimal liability;
 
+            //we could also write
+            //public decimal Liability {get; set;} --- this is auto-implemented property
+
+            public decimal Liability
+            {
+                get
+                {
+                    return liability;
+                }
+                set
+                { 
+                    liability = value; 
+                }
+            }
+        }
+
+        public class Assets
+        {
+            private decimal asset;
+            //we could also write
+            //public decimal Asset {get; set;} --- this is auto-implemented property
+
+            public decimal Asset
+            {
+                get
+                {
+                    return asset; 
+                }
+                set
+                {
+                    asset = value;
+                }
+            }
         }
 
         static void Main(string[] args)
