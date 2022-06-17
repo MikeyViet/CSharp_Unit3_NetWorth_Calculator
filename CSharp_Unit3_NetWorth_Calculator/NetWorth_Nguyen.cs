@@ -23,11 +23,14 @@ namespace Networth
     {
         public class Liabilities
         {
+            private string name;
             private decimal liability;
+            static private decimal totalLiabilities;
 
-            //we could also write
+            public string Name { get; set; }
+
+            //we could also write below
             //public decimal Liability {get; set;} --- this is auto-implemented property
-
             public decimal Liability
             {
                 get
@@ -35,18 +38,31 @@ namespace Networth
                     return liability;
                 }
                 set
-                { 
-                    liability = value; 
+                {
+                    liability = value;
                 }
             }
+
+            public static decimal TotalLiabilities { get { return totalLiabilities; } }
+            public static void sumLiability(decimal total_L)
+            {
+                totalLiabilities += total_L; 
+            }
+              
+
+
         }
 
         public class Assets
         {
+            private string name;
             private decimal asset;
-            //we could also write
-            //public decimal Asset {get; set;} --- this is auto-implemented property
+            static private decimal totalAssets;
 
+            public string Name { get; set; }
+
+            //we could also write below
+            //public decimal Asset {get; set;} --- this is auto-implemented property
             public decimal Asset
             {
                 get
@@ -62,6 +78,40 @@ namespace Networth
 
         static void Main(string[] args)
         {
+            int countLiabilities = 0;
+
+            //create list of objects for liabilities and assets
+            List<Assets> assets = new List<Assets>();   
+            List<Liabilities> liabilities = new List<Liabilities>();
+
+            Console.Write("Please enter the number of liabilities: ");
+            countLiabilities = Int32.Parse(Console.ReadLine());
+
+            for(int i = 0; i < countLiabilities; i++)
+            {
+
+                liabilities.Add(new Liabilities());
+            }
+
+            for (int i = 0; i < countLiabilities; i++)
+            {
+                Console.Write($"Please enter name of Liability #{i+1}: ");
+                liabilities[i].Name = Console.ReadLine();
+            }
+
+            for (int i = 0; i < countLiabilities; i++)
+            {
+                Console.WriteLine($"Name of Liability #{i + 1} is {liabilities[i].Name} "); 
+            }
+
+
+        }
+    }
+}
+
+/*
+ * 
+ *         {
             //variable definitions
             int maxAssets = 0;
             int maxLiabilities = 0;
@@ -143,6 +193,4 @@ namespace Networth
 
             Console.WriteLine($"You are ${targetNetWorth - (totalAssets - totalLiabilities)} from reaching your target NetWorth of ${targetNetWorth}!");
         }
-    }
-}
-
+ */
